@@ -43,7 +43,7 @@ const Navbar = () => {
             label: "GitHub",
           },
           {
-            href: "https://www.instagram.com/your-username", // update with your Instagram
+            href: "https://www.instagram.com/_.tanishhhh.__/", // update with your Instagram
             icon: <FaInstagram />,
             label: "Instagram",
           },

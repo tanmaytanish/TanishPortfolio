@@ -1,7 +1,7 @@
 import React from "react";
 import {RiReactjsLine} from "react-icons/ri";
 import {TbBrandNextjs} from "react-icons/tb";
-import {SiExpress, SiDocker, SiKubernetes} from "react-icons/si";
+import {SiExpress, SiDocker, SiKubernetes, SiTerraform} from "react-icons/si";
 import {DiRedis} from "react-icons/di";
 import {FaNodeJs} from "react-icons/fa";
 import {BiLogoPostgresql} from "react-icons/bi";
@@ -17,7 +17,6 @@ const iconVariants = (duration) => ({
             duration: duration,
             repeat: Infinity,
             repeatType: "reverse",
-            // ease: "easeInOut"
             ease: "linear",
         },
     },
@@ -71,6 +70,9 @@ const Technologies = () => {
                 </motion.div>
                 <motion.div initial="initial" animate="animate" variants={iconVariants(2)} className="p-4">
                     <SiKubernetes className="text-7xl text-blue-700" />
+                </motion.div>
+                <motion.div initial="initial" animate="animate" variants={iconVariants(3)} className="p-4">
+                    <SiTerraform className="text-7xl text-purple-600" />
                 </motion.div>
             </motion.div>
         </div>
