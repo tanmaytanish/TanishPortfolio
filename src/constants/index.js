@@ -1,5 +1,5 @@
 import project1 from "../assets/projects/project-1.webp";
-import docMate from "../assets/projects/docMate-home.png";
+import docMate from "../assets/projects/docmate-home.png";
 import devops from "../assets/projects/devops.png";
 import project2 from "../assets/projects/project-2.webp";
 import project3 from "../assets/projects/project-3.webp";
