@@ -1,12 +1,9 @@
 import project1 from "../assets/projects/project-1.webp";
 import docMate from "../assets/projects/docmate-home.png";
 import devops from "../assets/projects/devops.png";
-import project2 from "../assets/projects/project-2.webp";
-import project3 from "../assets/projects/project-3.webp";
-import project4 from "../assets/projects/project-4.webp";
+import invogen from "../assets/projects/InvoGen.png";
 import VisuaLyze from "../assets/projects/VisuaLyze.png";
 import charles from "../assets/projects/CharlesTyrwhitt.png";
-
 
 export const HERO_CONTENT = `I architect and deploy complete web solutions using the MERN stack (MongoDB, Express, React, Node.js), Next.js for production-grade applications, and DevOps tools for seamless deployments. Specialize in building performant systems from database design to UI implementation, automated with CI/CD pipelines and cloud infrastructure (AWS, Docker).`;
 
@@ -18,7 +15,7 @@ export const EXPERIENCES = [
         role: "DevOps Engineer",
         company: "Ingenious-Tech World",
         description: `Implemented CI/CD pipelines using GitHub Actions and Docker. Monitored cloud infrastructure and automated deployment processes for Node.js and React apps. Collaborated with developers to streamline delivery cycles and reduce deployment errors.`,
-        technologies: ["DevSecOps","Kubernetes","Docker", "GitHub Actions", "AWS", "Terraform",],
+        technologies: ["DevSecOps", "Kubernetes", "Docker", "GitHub Actions", "AWS", "Terraform"],
     },
     {
         year: "June, 2024 - July, 2024",
@@ -38,17 +35,26 @@ export const EXPERIENCES = [
 
 export const PROJECTS = [
     {
+        title: "AI-Powered Invoice Generator",
+        image: invogen,
+        description:
+            "InvoGen - An AI-powered full-stack invoice generation platform built with the MERN stack and Google Gemini AI. Features include AI-driven invoice creation from text/emails, financial analytics dashboard, smart AI payment reminders, invoice management, and PDF export.",
+        technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "Google Gemini AI"],
+        link: "https://invogen-frontend.onrender.com/",
+    },
+    {
         title: "Secure AWS CI/CD Pipeline with Terraform & DevSecOps Integration",
         image: devops,
         description:
             "Built a secure CI/CD pipeline using Terraform to provision AWS EKS infrastructure, integrated with GitHub Actions for automated deployments. Implemented security scanning (tfsec, Trivy, kube-bench) and encrypted secrets management (Sealed Secrets) to enforce compliance throughout the deployment process.",
-        technologies: ["Terraform", "AWS CodePipeline", "EKS", "GitHub Actions", "tfsec","Trivy", "kube-bench"],
+        technologies: ["Terraform", "AWS CodePipeline", "EKS", "GitHub Actions", "tfsec", "Trivy", "kube-bench"],
         // link: "https://excel-analytics-platform.vercel.app/",
-    },{
+    },
+    {
         title: "Doctor Appointment Booking System",
         image: docMate,
         description:
-            "A full-stack web application for managing doctor appointments with role-based access for patients, doctors, and admins. Features include appointment booking, real-time doctor availability, profile management, and admin dashboard.",
+            "DocMate - A full-stack web application for managing doctor appointments with role-based access for patients, doctors, and admins. Features include appointment booking, real-time doctor availability, profile management, and admin dashboard.",
         technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
         link: "https://docmate-8ygo.onrender.com/",
     },
@@ -60,7 +66,7 @@ export const PROJECTS = [
         technologies: ["MongoDB", "Express.js", "React.js", "Three.js", "SheetJS"],
         link: "https://excel-analytics-platform.vercel.app/",
     },
-    
+
     {
         title: "E-Commerce Website",
         image: charles,
