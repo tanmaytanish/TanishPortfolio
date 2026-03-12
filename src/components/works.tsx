@@ -67,9 +67,9 @@ const ProjectCard = ({
         {technologies.map((tech, i) => (
           <p
             key={`Tag-${i}`}
-            className={cn("text-[14px] text-blue-text-gradient")}
+            className={cn("bg-white/10 border border-white/20 text-white-100 text-[12px] font-medium px-3 py-1 rounded-full backdrop-blur-sm")}
           >
-            #{tech}
+            {tech}
           </p>
         ))}
       </div>
