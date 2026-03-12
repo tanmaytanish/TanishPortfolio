@@ -1,6 +1,3 @@
-// Contains constant data for using in website
-// ! Don't remove anything from here if not sure
-
 import {
   mobile,
   backend,
@@ -18,17 +15,8 @@ import {
   git,
   figma,
   docker,
-  meta,
-  starbucks,
-  tesla,
-  shopify,
   threejs,
   project1,
-  project2,
-  project3,
-  project4,
-  project5,
-  project6,
   user1,
   user2,
   user3,
@@ -36,6 +24,11 @@ import {
   linkedin,
   twitter,
   github,
+  docMate,
+  devops,
+  invogen,
+  VisuaLyze,
+  charles,
 } from "../assets";
 
 // Navbar Links
@@ -47,7 +40,12 @@ export const NAV_LINKS = [
   },
   {
     id: "work",
-    title: "Work",
+    title: "Experience",
+    link: null,
+  },
+  {
+    id: "projects",
+    title: "Projects",
     link: null,
   },
   {
@@ -55,8 +53,11 @@ export const NAV_LINKS = [
     title: "Contact",
     link: null,
   },
-
 ] as const;
+
+export const HERO_CONTENT = `I architect and deploy complete web solutions using the MERN stack (MongoDB, Express, React, Node.js), Next.js for production-grade applications, and DevOps tools for seamless deployments. Specialize in building performant systems from database design to UI implementation, automated with CI/CD pipelines and cloud infrastructure (AWS, Docker).`;
+
+export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer with a passion for creating efficient and user-friendly web applications. With 5 years of professional experience, I have worked with a variety of technologies, including React, Next.js, Node.js, MySQL, PostgreSQL, and MongoDB. My journey in web development began with a deep curiosity for how things work, and it has evolved into a career where I continuously strive to learn and adapt to new challenges. I thrive in collaborative environments and enjoy solving complex problems to deliver high-quality solutions. Outside of coding, I enjoy staying active, exploring new technologies, and contributing to open-source projects.`;
 
 // Services
 export const SERVICES = [
@@ -137,56 +138,38 @@ export const TECHNOLOGIES = [
 // Experiences
 export const EXPERIENCES = [
   {
-    title: "React.js Developer",
-    company_name: "Starbucks",
-    icon: starbucks,
+    year: "June, 2025 - July, 2025",
+    role: "DevOps Engineer",
+    company: "Ingenious-Tech World",
+    description: `Implemented CI/CD pipelines using GitHub Actions and Docker. Monitored cloud infrastructure and automated deployment processes for Node.js and React apps. Collaborated with developers to streamline delivery cycles and reduce deployment errors.`,
+    technologies: [
+      "DevSecOps",
+      "Kubernetes",
+      "Docker",
+      "GitHub Actions",
+      "AWS",
+      "Terraform",
+    ],
+    icon: backend, // Using fallback icon
     iconBg: "#383E56",
-    date: "March 2020 - April 2021",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
   },
   {
-    title: "React Native Developer",
-    company_name: "Tesla",
-    icon: tesla,
+    year: "June, 2024 - July, 2024",
+    role: "MERN Stack Developer",
+    company: "CodeBeat Placement",
+    description: `Developed dynamic web interfaces using React and Next.js. Collaborated with backend engineers to connect frontend components with Node.js APIs. Ensured responsive design, optimized performance, and enhanced user experience.`,
+    technologies: ["HTML", "CSS", "React.js", "Next.js", "MongoDB"],
+    icon: reactjs, // Using fallback icon
     iconBg: "#E6DEDD",
-    date: "Jan 2021 - Feb 2022",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
   },
   {
-    title: "Web Developer",
-    company_name: "Shopify",
-    icon: shopify,
+    year: "July, 2023 - August, 2023",
+    role: "Cloud Practitioner",
+    company: "Ingenious-Tech World",
+    description: `Assisted in managing cloud-based services and deploying applications using AWS. Gained hands-on experience with modern JS frameworks and cloud databases. Focused on scalability, security, and performance monitoring.`,
+    technologies: ["AWS", "VPN", "Load Balancers", "s3 Buckets"],
+    icon: mobile, // Using fallback icon
     iconBg: "#383E56",
-    date: "Jan 2022 - Jan 2023",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
-  },
-  {
-    title: "Full stack Developer",
-    company_name: "Meta",
-    icon: meta,
-    iconBg: "#E6DEDD",
-    date: "Jan 2023 - Present",
-    points: [
-      "Developing and maintaining web applications using React.js and other related technologies.",
-      "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-      "Implementing responsive design and ensuring cross-browser compatibility.",
-      "Participating in code reviews and providing constructive feedback to other developers.",
-    ],
   },
 ] as const;
 
@@ -221,136 +204,57 @@ export const TESTIMONIALS = [
 // Projects
 export const PROJECTS = [
   {
-    name: "Disney+ Clone",
+    title: "AI-Powered Invoice Generator",
+    image: invogen,
     description:
-      "Disney+ is one of the biggest streaming platforms used by millions of people world-wide and allows us to stream high quality content in 4k and various other formats",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "firebase",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
+      "InvoGen - An AI-powered full-stack invoice generation platform built with the MERN stack and Google Gemini AI. Features include AI-driven invoice creation from text/emails, financial analytics dashboard, smart AI payment reminders, invoice management, and PDF export.",
+    technologies: [
+      "MongoDB",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "Google Gemini AI",
     ],
-    image: project1,
-    source_code_link: "https://github.com/sanidhyy/disney-clone",
-    live_site_link: "https://clonedisneyplus.web.app",
+    link: "https://invogen-frontend.onrender.com/",
   },
   {
-    name: "Golds Gym",
+    title: "Secure AWS CI/CD Pipeline",
+    image: devops,
     description:
-      "Web application that enables users to search for fitness exercises, effective personalized positions, and recommends new exercises based on their personal preferences.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "rapidapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwindcss",
-        color: "pink-text-gradient",
-      },
+      "Built a secure CI/CD pipeline using Terraform to provision AWS EKS infrastructure, integrated with GitHub Actions for automated deployments. Implemented security scanning (tfsec, Trivy, kube-bench) and encrypted secrets management.",
+    technologies: [
+      "Terraform",
+      "AWS CodePipeline",
+      "EKS",
+      "GitHub Actions",
+      "tfsec",
+      "Trivy",
     ],
-    image: project2,
-    source_code_link: "https://github.com/sanidhyy/fitness-app",
-    live_site_link: "https://fitness-gym-react.netlify.app",
+    link: "#",
   },
   {
-    name: "Shoppy",
+    title: "Doctor Appointment Booking",
+    image: docMate,
     description:
-      "The most personalised admin dashboard web application that allows enables users to choose customized themes and dark mode with different pages and variety of charts.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "syncfusion",
-        color: "green-text-gradient",
-      },
-      {
-        name: "scss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project3,
-    source_code_link: "https://github.com/sanidhyy/admin-dashboard",
-    live_site_link: "https://shoppy-dashboard-react.netlify.app",
+      "DocMate - A full-stack web application for managing doctor appointments with role-based access for patients, doctors, and admins. Features include appointment booking, real-time doctor availability, and admin dashboard.",
+    technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
+    link: "https://docmate-8ygo.onrender.com/",
   },
   {
-    name: "TikTok Clone",
+    title: "Excel-Analytics Platform",
+    image: VisuaLyze,
     description:
-      "A Next JS Web Application that enables users to upload videos of any length and size, create accounts and connect with other people just like any other social media.",
-    tags: [
-      {
-        name: "nextjs",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "nodejs",
-        color: "green-text-gradient",
-      },
-      {
-        name: "tailwindcss",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project4,
-    source_code_link: "https://github.com/sanidhyy/tiktok-clone",
-    live_site_link: "https://tiktok-clone-react.vercel.app",
+      "An analytics platform that allows users to upload Excel/CSV files, process data, and view insights. Includes file upload with Multer, data storage in MongoDB, and user-specific data retrieval.",
+    technologies: ["MongoDB", "Express.js", "React.js", "Three.js", "SheetJS"],
+    link: "https://excel-analytics-platform.vercel.app/",
   },
   {
-    name: "Cryptoverse",
+    title: "E-Commerce Website",
+    image: charles,
     description:
-      "Best Cryptocurrency web application that allows users to view price, market cap and daily change in realtime for almost every cryptocurrency in the world.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "rapidapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "css",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project5,
-    source_code_link: "https://github.com/sanidhyy/crypto-app",
-    live_site_link: "https://reactjscryptoapp.netlify.app",
-  },
-  {
-    name: "Travel Advisor",
-    description:
-      "Web application that enables you to view your nearby restaurants, hotels and attractions which can be sorted by ratings, price and much more.",
-    tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "rapidapi",
-        color: "green-text-gradient",
-      },
-      {
-        name: "material-ui",
-        color: "pink-text-gradient",
-      },
-    ],
-    image: project6,
-    source_code_link: "https://github.com/sanidhyy/travel-advisor",
-    live_site_link: "https://travel-advisor-reactjs.netlify.app",
+      "A fully responsive MERN stack e-commerce website inspired by Charles Tyrwhitt, featuring user authentication, product management, cart, checkout, and admin dashboard.",
+    technologies: ["HTML", "CSS", "React.js", "Bootstrap", "Node.js"],
+    link: "https://charles-tyrwhitt-clone.vercel.app/",
   },
 ] as const;
 
@@ -376,3 +280,9 @@ export const SOCIALS = [
     link: "https://github.com/tanmaytanish",
   },
 ] as const;
+
+export const CONTACT = {
+  address: "Dahaliabag, Cuttack, Odisha, India",
+  phoneNo: "+91 84580 05099 ",
+  email: "tanishtech14@gmail.com",
+};

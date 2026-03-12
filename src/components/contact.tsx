@@ -7,6 +7,7 @@ import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
+import { CONTACT } from "../constants";
 
 // Contact
 export const Contact = () => {
@@ -132,11 +133,18 @@ export const Contact = () => {
           <p className={styles.sectionSubText}>Get in touch</p>
           <h3 className={styles.sectionHeadText}>Contact.</h3>
 
+          {/* Contact Details */}
+          <div className="mt-4 flex flex-col gap-2 text-secondary text-[16px]">
+            <p>📍 {CONTACT.address}</p>
+            <p>📞 {CONTACT.phoneNo}</p>
+            <p>📧 {CONTACT.email}</p>
+          </div>
+
           {/* Form */}
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="mt-12 flex flex-col gap-8"
+            className="mt-8 flex flex-col gap-8"
           >
             {/* Name */}
             <label htmlFor="name" className="flex flex-col">
