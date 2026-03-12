@@ -1,8 +1,9 @@
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import CanvasLoader from "../loader";
+import { isWebGLAvailable } from "../../utils/webgl";
 
 // Earth
 const Earth = () => {
@@ -16,6 +17,23 @@ const Earth = () => {
 
 // Earth Canvas
 const EarthCanvas = () => {
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
+  useEffect(() => {
+    setWebGLSupported(isWebGLAvailable());
+  }, []);
+
+  if (!webGLSupported) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-6xl mb-4">🌍</div>
+          <p className="text-secondary text-sm">3D globe not supported</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Canvas
       shadows
@@ -40,3 +58,4 @@ const EarthCanvas = () => {
 };
 
 export default EarthCanvas;
+
