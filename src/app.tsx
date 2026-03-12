@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState, useEffect, useCallback } from "react";
 import { BrowserRouter } from "react-router-dom";
+import { ReactLenis } from "lenis/react";
 import { Navbar, SectionLoader } from "./components";
 import { LoadingScreen } from "./components/loading-screen";
 
@@ -76,29 +77,40 @@ const App = () => {
   }, [isLoading]);
 
   return (
-    <BrowserRouter>
-      <LoadingScreen isLoading={isLoading} progress={progress} />
-      <div className="relative z-0 bg-primary">
-        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Navbar />
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.05, // Lower lerp = smoother, heavier feel (default usually 0.1)
+        duration: 1.5, // Total duration of the scroll animation
+        smoothWheel: true,
+        wheelMultiplier: 1, // How much the wheel scrolls
+        touchMultiplier: 2, // Smoothness on touch devices
+      }}
+    >
+      <BrowserRouter>
+        <LoadingScreen isLoading={isLoading} progress={progress} />
+        <div className="relative z-0 bg-primary">
+          <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+            <Navbar />
+            <Suspense fallback={<SectionLoader />}>
+              <Hero onModelLoaded={handleModelLoaded} />
+            </Suspense>
+          </div>
           <Suspense fallback={<SectionLoader />}>
-            <Hero onModelLoaded={handleModelLoaded} />
+            <About />
+            <Experience />
+            <Tech />
+            <Works />
+            <Feedbacks />
+            <div className="relative z-0">
+              <Contact />
+              <StarsCanvas />
+            </div>
+            <Footer />
           </Suspense>
         </div>
-        <Suspense fallback={<SectionLoader />}>
-          <About />
-          <Experience />
-          <Tech />
-          <Works />
-          <Feedbacks />
-          <div className="relative z-0">
-            <Contact />
-            <StarsCanvas />
-          </div>
-          <Footer />
-        </Suspense>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ReactLenis>
   );
 };
 
