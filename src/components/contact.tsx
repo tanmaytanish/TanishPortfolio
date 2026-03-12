@@ -1,13 +1,16 @@
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import { useState, useRef, type FormEvent, type ChangeEvent } from "react";
+import { useState, useRef, type FormEvent, type ChangeEvent, lazy, Suspense } from "react";
 import { toast } from "sonner";
 
-import { EarthCanvas } from "./canvas";
+import { SectionLoader } from ".";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
 import { CONTACT } from "../constants";
+
+const EarthCanvas = lazy(() => import("./canvas/earth"));
+
 
 // Contact
 export const Contact = () => {
@@ -231,7 +234,9 @@ export const Contact = () => {
           variants={slideIn("right", "tween", 0.2, 1)}
           className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
         >
-          <EarthCanvas />
+          <Suspense fallback={<div className="w-full h-full flex justify-center items-center"><SectionLoader /></div>}>
+            <EarthCanvas />
+          </Suspense>
         </motion.div>
       </div>
     </SectionWrapper>
