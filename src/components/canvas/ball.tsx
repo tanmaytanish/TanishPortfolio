@@ -9,6 +9,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 
 import CanvasLoader from "../loader";
+import { isWebGLAvailable } from "../../utils/webgl";
 
 type BallProps = {
   imgUrl: string;
@@ -55,8 +56,11 @@ type BallCanvasProps = {
 // Ball Canvas
 const BallCanvas = ({ icon }: BallCanvasProps) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [webGLSupported, setWebGLSupported] = useState(true);
 
   useEffect(() => {
+    setWebGLSupported(isWebGLAvailable());
+
     const mediaQuery = window.matchMedia("(max-width: 500px)");
 
     setIsMobile(mediaQuery.matches);
@@ -71,6 +75,14 @@ const BallCanvas = ({ icon }: BallCanvasProps) => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
+
+  if (!webGLSupported) {
+    return (
+      <div className="w-full h-full flex items-center justify-center">
+        <img src={icon} alt="tech" className="w-12 h-12 object-contain" />
+      </div>
+    );
+  }
 
   return (
     <Canvas frameloop="always" gl={{ preserveDrawingBuffer: true }}>
@@ -93,3 +105,4 @@ const BallCanvas = ({ icon }: BallCanvasProps) => {
 };
 
 export default BallCanvas;
+

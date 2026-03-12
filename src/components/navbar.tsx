@@ -31,8 +31,8 @@ export const Navbar = () => {
     <nav
       className={cn(
         "fixed top-4 z-20 w-fit max-w-[90vw] transition-all duration-500 ease-in-out px-2 py-2",
-        isAtBottom 
-          ? "right-4 left-auto translate-x-0" 
+        isAtBottom
+          ? "right-4 left-auto translate-x-0"
           : "left-1/2 -translate-x-1/2"
       )}
     >
@@ -114,7 +114,7 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
-            
+
             {/* Social Links (Mobile Menu) */}
             <div className="flex gap-4 mt-2 pt-4 border-t border-white/10 w-full justify-center">
               {SOCIALS.map((social) => (

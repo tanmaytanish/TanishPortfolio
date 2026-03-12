@@ -1,8 +1,10 @@
 import { Points, PointMaterial, Preload } from "@react-three/drei";
 import { Canvas, type PointsProps, useFrame } from "@react-three/fiber";
 import * as random from "maath/random";
-import { useRef, Suspense, useState } from "react";
+import { useRef, Suspense, useState, useEffect } from "react";
 import type { Points as PointsType } from "three";
+
+import { isWebGLAvailable } from "../../utils/webgl";
 
 // Stars
 const Stars = (props: PointsProps) => {
@@ -45,6 +47,15 @@ const Stars = (props: PointsProps) => {
 
 // Stars Canvas
 const StarsCanvas = () => {
+  const [webGLSupported, setWebGLSupported] = useState(true);
+
+  useEffect(() => {
+    setWebGLSupported(isWebGLAvailable());
+  }, []);
+
+  // Stars are decorative — just hide them on unsupported devices
+  if (!webGLSupported) return null;
+
   return (
     <div className="w-full h-auto absolute inset-0 z-[-1]">
       {/* Canvas */}
@@ -62,3 +73,4 @@ const StarsCanvas = () => {
 };
 
 export default StarsCanvas;
+
