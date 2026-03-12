@@ -95,11 +95,8 @@ const ComputersFallback = () => (
 // Canvas Component
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const [webGLSupported, setWebGLSupported] = useState(true);
 
   useEffect(() => {
-    setWebGLSupported(isWebGLAvailable());
-
     const mediaQuery = window.matchMedia("(max-width: 500px)");
 
     setIsMobile(mediaQuery.matches);
@@ -114,10 +111,6 @@ const ComputersCanvas = () => {
       mediaQuery.removeEventListener("change", handleMediaQueryChange);
     };
   }, []);
-
-  if (!webGLSupported) {
-    return <ComputersFallback />;
-  }
 
   return (
     <CanvasErrorBoundary fallback={<ComputersFallback />}>
