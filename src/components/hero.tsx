@@ -4,13 +4,21 @@ import { ComputersCanvas } from "./canvas";
 import { styles } from "../styles";
 import { cn } from "../utils/lib";
 import { HERO_CONTENT } from "../constants";
+import { fadeIn, staggerContainer, textVariant } from "../utils/motion";
 
 // Hero
 export const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto flex flex-col lg:flex-row items-center justify-between">
+    <motion.section 
+      variants={staggerContainer()}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+      className="relative w-full h-screen mx-auto flex flex-col lg:flex-row items-center justify-between"
+    >
       {/* Text Content Area */}
-      <div
+      <motion.div
+        variants={fadeIn("right", "tween", 0.2, 1)}
         className={cn(
           styles.paddingX,
           "w-full lg:w-1/2 flex flex-row items-start gap-5 pt-[120px] lg:pt-0 z-10",
@@ -24,19 +32,22 @@ export const Hero = () => {
 
         {/* Intro Text */}
         <div>
-          <h1 className={cn(styles.heroHeadText, "text-white")}>
+          <motion.h1 variants={textVariant(0.1)} className={cn(styles.heroHeadText, "text-white")}>
             Hi, I'm <span className="text-[#915eff]">Tanish</span>
-          </h1>
-          <p className={cn(styles.heroSubText, "mt-2 text-white-100")}>
+          </motion.h1>
+          <motion.p variants={textVariant(0.3)} className={cn(styles.heroSubText, "mt-2 text-white-100")}>
             {HERO_CONTENT}
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* 3D Computer Model Area */}
-      <div className="w-full lg:w-1/2 h-[50vh] lg:h-full relative">
+      <motion.div 
+        variants={fadeIn("left", "tween", 0.5, 1)}
+        className="w-full lg:w-1/2 h-[50vh] lg:h-full relative"
+      >
         <ComputersCanvas />
-      </div>
+      </motion.div>
 
       {/* Scroll to about section */}
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
@@ -56,6 +67,6 @@ export const Hero = () => {
           </div>
         </a>
       </div>
-    </section>
+    </motion.section>
   );
 };
