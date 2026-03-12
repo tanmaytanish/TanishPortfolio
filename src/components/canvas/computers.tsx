@@ -7,6 +7,7 @@ import { isWebGLAvailable } from "../../utils/webgl";
 
 type ComputersProps = {
   isMobile: boolean;
+  onModelLoaded?: () => void;
 };
 
 // Error Boundary for catching WebGL/Three.js crashes
@@ -36,8 +37,15 @@ class CanvasErrorBoundary extends Component<
 }
 
 // Computers Component
-const Computers = ({ isMobile }: ComputersProps) => {
+const Computers = ({ isMobile, onModelLoaded }: ComputersProps) => {
   const computer = useGLTF("./desktop_pc/scene.gltf");
+
+  // Fire onModelLoaded when the model is ready
+  useEffect(() => {
+    if (onModelLoaded) {
+      onModelLoaded();
+    }
+  }, [onModelLoaded]);
 
   // Improve material appearance without changing original colors
   useEffect(() => {
@@ -92,8 +100,12 @@ const ComputersFallback = () => (
   </div>
 );
 
+type ComputersCanvasProps = {
+  onModelLoaded?: () => void;
+};
+
 // Canvas Component
-const ComputersCanvas = () => {
+const ComputersCanvas = ({ onModelLoaded }: ComputersCanvasProps) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -135,7 +147,7 @@ const ComputersCanvas = () => {
           />
 
           {/* 3D Model */}
-          <Computers isMobile={isMobile} />
+          <Computers isMobile={isMobile} onModelLoaded={onModelLoaded} />
 
           {/* Environment Lighting */}
           <Environment preset="studio" />
