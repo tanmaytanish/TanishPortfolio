@@ -1,7 +1,7 @@
-import { Tilt } from "react-tilt";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-import { github, preview } from "../assets";
+import { preview } from "../assets";
 import { PROJECTS } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
@@ -12,33 +12,36 @@ type ProjectCardProps = (typeof PROJECTS)[number] & {
   index: number;
 };
 
-// Project Card
+// Project Card with Parallax
 const ProjectCard = ({
-  index,
   title,
   description,
   technologies,
   image,
   link,
-}: ProjectCardProps) => (
-  <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-    <Tilt
-      options={{
-        max: 45,
-        scale: 1,
-        speed: 450,
-      }}
-      className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full card-hover"
+}: ProjectCardProps) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax effect for the image inside the card
+  const x = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+
+  return (
+    <div
+      ref={ref}
+      className="bg-tertiary p-5 rounded-2xl sm:w-[500px] w-[320px] shrink-0"
     >
-      <div className="relative w-full h-[230px]">
-        {/* Work image */}
-        <img
+      <div className="relative w-full h-[230px] overflow-hidden rounded-2xl">
+        <motion.img
+          style={{ x }}
           src={image}
           alt={title}
-          className="w-full h-full object-cover rounded-2xl"
+          className="w-full h-full object-cover scale-125"
         />
 
-        {/* Live Site */}
         <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
           {link && (
             <div
@@ -56,59 +59,72 @@ const ProjectCard = ({
         </div>
       </div>
 
-      {/* Work Info */}
       <div className="mt-5">
         <h3 className="text-white font-bold text-[24px]">{title}</h3>
-        <p className="mt-2 text-secondary text-[14px]">{description}</p>
+        <p className="mt-2 text-secondary text-[14px] line-clamp-3">
+          {description}
+        </p>
       </div>
 
-      {/* Work Tag */}
       <div className="mt-4 flex flex-wrap gap-2">
         {technologies.map((tech, i) => (
           <p
             key={`Tag-${i}`}
-            className={cn("bg-white/10 border border-white/20 text-white-100 text-[12px] font-medium px-3 py-1 rounded-full backdrop-blur-sm")}
+            className={cn(
+              "bg-white/10 border border-white/20 text-white-100 text-[12px] font-medium px-3 py-1 rounded-full backdrop-blur-sm",
+            )}
           >
             {tech}
           </p>
         ))}
       </div>
-    </Tilt>
-  </motion.div>
-);
+    </div>
+  );
+};
 
 // Works
 export const Works = () => {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
+  // Transform vertical scroll (0 to 1) into horizontal translation
+  // We estimate the percentage based on number of projects
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+
   return (
-    <SectionWrapper idName="projects">
-      <>
-        {/* Title */}
-        <motion.div variants={textVariant()}>
-          <p className={styles.sectionSubText}>My Work</p>
-          <h2 className={styles.sectionHeadText}>Projects.</h2>
-        </motion.div>
+    <div ref={targetRef} className="relative h-[500vh]">
+      <section className={cn(styles.padding, "sticky top-0 h-screen overflow-hidden flex flex-col justify-center")}>
+        <div id="projects" className="absolute top-0" />
 
-        {/* About */}
-        <div className="w-full flex">
-          <motion.p
-            variants={fadeIn("up", "spring", 0.1, 1)}
-            className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-          >
+        {/* Title & Info */}
+        <div className="max-w-7xl mx-auto w-full mb-10">
+          <motion.div variants={textVariant()}>
+            <p className={styles.sectionSubText}>My Work</p>
+            <h2 className={styles.sectionHeadText}>Projects.</h2>
+          </motion.div>
+
+          <div className="w-full flex">
+            <motion.p
+              variants={fadeIn("up", "spring", 0.1, 1)}
+              className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+            >
             Following projects showcases my skills and experience through
-            real-world examples of my work. Each project is briefly described
-            with links to code repositories and live demos in it. It reflects my
-            ability to solve complex problems, work with different technologies,
-            and manage projects effectively.
-          </motion.p>
+            real-world examples of my work.
+            </motion.p>
+          </div>
         </div>
 
-        {/* Project Card */}
-        <div className="mt-20 flex flex-wrap gap-7">
-          {PROJECTS.map((project, i) => (
-            <ProjectCard key={`project-${i}`} index={i} {...project} />
-          ))}
+        {/* Horizontal Moving Track */}
+        <div className="flex items-center">
+          <motion.div style={{ x }} className="flex gap-10 px-10">
+            {PROJECTS.map((project, i) => (
+              <ProjectCard key={`project-${i}`} index={i} {...project} />
+            ))}
+          </motion.div>
         </div>
-      </>
-    </SectionWrapper>
+      </section>
+    </div>
   );
 };
