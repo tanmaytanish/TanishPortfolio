@@ -26,6 +26,11 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import threejs from "./tech/threejs.svg";
 import typescript from "./tech/typescript.png";
+import angular from "./tech/angular.svg";
+import kubernetes from "./tech/kubernetes.svg";
+import springboot from "./tech/springboot.svg";
+import express from "./tech/express.svg";
+import postman from "./tech/postman.svg";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -101,4 +106,9 @@ export {
   linkedin,
   twitter,
   logo_tanish,
+  angular,
+  kubernetes,
+  springboot,
+  express,
+  postman,
 };

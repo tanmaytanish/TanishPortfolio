@@ -30,6 +30,11 @@ import {
   invogen,
   VisuaLyze,
   charles,
+  angular,
+  kubernetes,
+  springboot,
+  express,
+  postman,
 } from "../assets";
 
 // Navbar Links
@@ -129,6 +134,30 @@ export const TECHNOLOGIES = [
   {
     name: "docker",
     icon: docker,
+  },
+  {
+    name: "AWS",
+    icon: aws,
+  },
+  {
+    name: "Kubernetes",
+    icon: kubernetes,
+  },
+  {
+    name: "Angular",
+    icon: angular,
+  },
+  {
+    name: "Spring Boot",
+    icon: springboot,
+  },
+  {
+    name: "Express.js",
+    icon: express,
+  },
+  {
+    name: "Postman",
+    icon: postman,
   },
 ] as const;
 
