@@ -8,20 +8,21 @@ import { HERO_CONTENT } from "../constants";
 // Hero
 export const Hero = () => {
   return (
-    <section className="relative w-full h-screen mx-auto">
+    <section className="relative w-full h-screen mx-auto flex flex-col lg:flex-row items-center justify-between">
+      {/* Text Content Area */}
       <div
         className={cn(
           styles.paddingX,
-          "absolute inset-0 top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-5",
+          "w-full lg:w-1/2 flex flex-row items-start gap-5 pt-[120px] lg:pt-0 z-10",
         )}
       >
-        {/* Title */}
+        {/* Decorative Line */}
         <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-[#915eff]" />
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        {/* About Me */}
+        {/* Intro Text */}
         <div>
           <h1 className={cn(styles.heroHeadText, "text-white")}>
             Hi, I'm <span className="text-[#915eff]">Tanish</span>
@@ -32,8 +33,10 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Computer Model */}
-      <ComputersCanvas />
+      {/* 3D Computer Model Area */}
+      <div className="w-full lg:w-1/2 h-[50vh] lg:h-full relative">
+        <ComputersCanvas />
+      </div>
 
       {/* Scroll to about section */}
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">

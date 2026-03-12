@@ -51,9 +51,9 @@ const ExperienceCard = ({ experience }: ExperienceCardProps) => (
       {experience.technologies.map((tech, i) => (
         <span
           key={`tech-${i}`}
-          className="text-blue-text-gradient text-[12px] font-medium"
+          className="bg-white/10 border border-white/20 text-white-100 text-[12px] font-medium px-3 py-1 rounded-full backdrop-blur-sm"
         >
-          #{tech}
+          {tech}
         </span>
       ))}
     </div>
