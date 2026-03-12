@@ -241,3 +241,22 @@
   transition: transform 0.3s ease;
   box-shadow: 0 10px 30px rgba(128, 77, 238, 0.2);
 }
+
+/* Glassmorphism Navbar */
+.glass-nav {
+  background: rgba(17, 18, 34, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.nav-pill {
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.nav-pill-active {
+  background: rgba(45, 50, 80, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

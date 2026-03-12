@@ -30,34 +30,33 @@ export const Navbar = () => {
   return (
     <nav
       className={cn(
-        styles.paddingX,
-        "w-full flex items-center py-5 fixed top-0 z-20 bg-primary mt-0"
+        "fixed top-4 z-20 w-fit max-w-[90vw] transition-all duration-500 ease-in-out px-2 py-2",
+        isAtBottom 
+          ? "right-4 left-auto translate-x-0" 
+          : "left-1/2 -translate-x-1/2"
       )}
     >
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo */}
+      <div className="flex items-center justify-center glass-nav rounded-full px-6 py-2 gap-4">
+        {/* Logo - Reduced size for pill */}
         <Link
           to="/"
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 mr-4"
           onClick={() => {
             setActive("");
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt="Logo" className="w-9 h-9 object-contain" />
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            Tanish&nbsp;<span className="sm:block hidden">| Developer</span>
-          </p>
+          <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
         </Link>
 
         {/* Nav Links (Desktop) */}
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="list-none hidden sm:flex flex-row items-center gap-2">
           {NAV_LINKS.map((link) => (
             <li
               key={link.id}
               className={cn(
-                active === link.title ? "text-white" : "text-secondary",
-                "hover:text-white text-[18px] font-medium cursor-pointer"
+                active === link.title ? "text-white nav-pill-active" : "text-secondary",
+                "hover:text-white text-[16px] font-medium cursor-pointer nav-pill px-4 py-1.5"
               )}
               onClick={() => !link.link && setActive(link.title)}
             >
@@ -72,19 +71,19 @@ export const Navbar = () => {
           ))}
         </ul>
 
-        {/* Hamburger Menu (Mobile) */}
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        {/* Hamburger Menu (Mobile) - Keep it simple inside pill */}
+        <div className="sm:hidden flex items-center ml-2">
           <img
             src={toggle ? close : menu}
             alt="Menu"
-            className="w-[28px] h-[28px] object-contain cursor-pointer"
+            className="w-[24px] h-[24px] object-contain cursor-pointer"
             onClick={() => setToggle(!toggle)}
           />
 
           <div
             className={cn(
               !toggle ? "hidden" : "flex",
-              "p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl"
+              "p-6 glass-nav absolute top-16 right-0 mx-2 my-2 min-w-[140px] z-10 rounded-2xl flex-col gap-4 animate-in fade-in slide-in-from-top-4"
             )}
           >
             {/* Nav Links (Mobile) */}
@@ -93,8 +92,8 @@ export const Navbar = () => {
                 <li
                   key={link.id}
                   className={cn(
-                    active === link.title ? "text-white" : "text-secondary",
-                    "font-poppins font-medium cursor-pointer text-[16px]"
+                    active === link.title ? "text-white bg-white/10" : "text-secondary",
+                    "font-poppins font-medium cursor-pointer text-[16px] w-full px-3 py-1 rounded-lg"
                   )}
                   onClick={() => {
                     !link.link && setToggle(!toggle);

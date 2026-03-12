@@ -38,6 +38,12 @@ import project4 from "./projects/project4.png";
 import project5 from "./projects/project5.png";
 import project6 from "./projects/project6.png";
 
+import docMate from "./projects/docmate-home.png";
+import devops from "./projects/devops.png";
+import invogen from "./projects/InvoGen.png";
+import VisuaLyze from "./projects/VisuaLyze.png";
+import charles from "./projects/CharlesTyrwhitt.png";
+
 import user1 from "./testimonials/user1.jpg";
 import user2 from "./testimonials/user2.jpg";
 import user3 from "./testimonials/user3.jpg";
@@ -80,6 +86,11 @@ export {
   project4,
   project5,
   project6,
+  docMate,
+  devops,
+  invogen,
+  VisuaLyze,
+  charles,
   user1,
   user2,
   user3,

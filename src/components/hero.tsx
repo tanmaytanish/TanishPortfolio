@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ComputersCanvas } from "./canvas";
 import { styles } from "../styles";
 import { cn } from "../utils/lib";
+import { HERO_CONTENT } from "../constants";
 
 // Hero
 export const Hero = () => {
@@ -26,8 +27,7 @@ export const Hero = () => {
             Hi, I'm <span className="text-[#915eff]">Tanish</span>
           </h1>
           <p className={cn(styles.heroSubText, "mt-2 text-white-100")}>
-            I develop 3D visuals, user <br className="sm:block hidden" />
-            interfaces and web applications
+            {HERO_CONTENT}
           </p>
         </div>
       </div>
