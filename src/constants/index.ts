@@ -138,6 +138,15 @@ export const TECHNOLOGIES = [
 // Experiences
 export const EXPERIENCES = [
   {
+    year: "August, 2025 - Present",
+    role: "Full Stack Developer Intern",
+    company: "AayraTechX",
+    description: `Working on live projects using React, Angular, Spring Boot, and MongoDB. Responsible for developing and maintaining full-stack applications and ensuring seamless integration between frontend and backend systems.`,
+    technologies: ["React", "Angular", "Spring Boot", "MongoDB"],
+    icon: web,
+    iconBg: "#383E56",
+  },
+  {
     year: "June, 2025 - July, 2025",
     role: "DevOps Engineer",
     company: "Ingenious-Tech World",
