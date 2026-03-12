@@ -2,6 +2,7 @@
 // Don't remove anything from here if not sure
 
 import backend from "./backend.png";
+import aws from "./aws.svg";
 import bulb from "./bulb.svg";
 import close from "./close.svg";
 import creator from "./creator.png";
@@ -55,6 +56,7 @@ import youtube from "./socials/youtube.svg";
 
 export {
   backend,
+  aws,
   bulb,
   close,
   creator,

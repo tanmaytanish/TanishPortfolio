@@ -1,6 +1,7 @@
 import {
   mobile,
   backend,
+  aws,
   creator,
   web,
   javascript,
@@ -62,20 +63,16 @@ export const ABOUT_TEXT = `I am a dedicated and versatile full stack developer w
 // Services
 export const SERVICES = [
   {
-    title: "Web Developer",
-    icon: web,
+    title: "Full Stack Developer",
+    icon: reactjs,
   },
   {
-    title: "React Native Developer",
-    icon: mobile,
+    title: "Cloud Practitioner",
+    icon: aws,
   },
   {
-    title: "Backend Developer",
-    icon: backend,
-  },
-  {
-    title: "Content Creator",
-    icon: creator,
+    title: "Devops Practitioner",
+    icon: docker,
   },
 ] as const;
 
@@ -137,6 +134,15 @@ export const TECHNOLOGIES = [
 
 // Experiences
 export const EXPERIENCES = [
+  {
+    year: "August, 2025 - Present",
+    role: "Full Stack Developer Intern",
+    company: "AayraTechX",
+    description: `Working on live projects using React, Angular, Spring Boot, and MongoDB. Responsible for developing and maintaining full-stack applications and ensuring seamless integration between frontend and backend systems.`,
+    technologies: ["React", "Angular", "Spring Boot", "MongoDB"],
+    icon: web,
+    iconBg: "#383E56",
+  },
   {
     year: "June, 2025 - July, 2025",
     role: "DevOps Engineer",
@@ -259,21 +265,13 @@ export const PROJECTS = [
 ] as const;
 
 export const SOCIALS = [
-  {
-    name: "YouTube",
-    icon: youtube,
-    link: "https://www.youtube.com",
-  },
+
   {
     name: "Linkedin",
     icon: linkedin,
     link: "https://www.linkedin.com/in/tanish-tanmay-sahoo/",
   },
-  {
-    name: "Twitter",
-    icon: twitter,
-    link: "https://x.com/tanish",
-  },
+
   {
     name: "GitHub",
     icon: github,
