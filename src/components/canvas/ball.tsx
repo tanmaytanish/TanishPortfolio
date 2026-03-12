@@ -6,7 +6,7 @@ import {
   useTexture,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 import CanvasLoader from "../loader";
 
@@ -38,6 +38,11 @@ const Ball = ({ imgUrl }: BallProps) => {
           rotation={[2 * Math.PI, 0, 6.25]}
           map={decal}
         />
+        <Decal
+          position={[0, 0, -1]}
+          rotation={[2 * Math.PI, Math.PI, 6.25]}
+          map={decal}
+        />
       </mesh>
     </Float>
   );
@@ -49,11 +54,35 @@ type BallCanvasProps = {
 
 // Ball Canvas
 const BallCanvas = ({ icon }: BallCanvasProps) => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 500px)");
+
+    setIsMobile(mediaQuery.matches);
+
+    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+    };
+  }, []);
+
   return (
-    <Canvas frameloop="demand" gl={{ preserveDrawingBuffer: true }}>
+    <Canvas frameloop="always" gl={{ preserveDrawingBuffer: true }}>
       {/* Show canvas loader on fallback */}
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls enableZoom={false} />
+        <OrbitControls
+          enableZoom={false}
+          enableRotate={!isMobile}
+          autoRotate={true}
+          autoRotateSpeed={5}
+          enablePan={false}
+        />
         <Ball imgUrl={icon} />
       </Suspense>
 
