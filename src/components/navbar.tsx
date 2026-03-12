@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { logo_tanish as logo, menu, close } from "../assets";
-import { NAV_LINKS } from "../constants";
+import { NAV_LINKS, SOCIALS } from "../constants";
 import { styles } from "../styles";
 import { cn } from "../utils/lib";
 
@@ -114,6 +114,21 @@ export const Navbar = () => {
                 </li>
               ))}
             </ul>
+            
+            {/* Social Links (Mobile Menu) */}
+            <div className="flex gap-4 mt-2 pt-4 border-t border-white/10 w-full justify-center">
+              {SOCIALS.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.link}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="opacity-70 hover:opacity-100 transition"
+                >
+                  <img src={social.icon} alt={social.name} className="w-6 h-6 object-contain" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
