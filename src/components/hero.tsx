@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 import { ComputersCanvas } from "./canvas";
 import { styles } from "../styles";
@@ -12,6 +13,37 @@ type HeroProps = {
 
 // Hero
 export const Hero = ({ onModelLoaded }: HeroProps) => {
+  const name = "Tanish";
+  const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+
+  // Typewriter effect
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    if (isTyping) {
+      if (displayText.length < name.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(name.slice(0, displayText.length + 1));
+        }, 150); // Typing speed
+      } else {
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, 2500); // Pause at end before deleting
+      }
+    } else {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(name.slice(0, displayText.length - 1));
+        }, 100); // Deleting speed
+      } else {
+        timeout = setTimeout(() => {
+          setIsTyping(true);
+        }, 500); // Pause before typing again
+      }
+    }
+    return () => clearTimeout(timeout);
+  }, [displayText, isTyping]);
+
   return (
     <motion.section
       variants={staggerContainer()}
@@ -36,8 +68,20 @@ export const Hero = ({ onModelLoaded }: HeroProps) => {
 
         {/* Intro Text */}
         <div>
-          <motion.h1 variants={textVariant(0.1)} className={cn(styles.heroHeadText, "text-white")}>
-            Hi, I'm <span className="text-[#915eff]">Tanish</span>
+          <motion.h1 
+            variants={textVariant(0.1)} 
+            className={cn(styles.heroHeadText, "text-white flex flex-col items-start")}
+          >
+            Hi, I'm
+            <span className="flex font-bold items-center text-[#915eff]">
+              <span>{displayText}</span>
+              {/* Blinking cursor */}
+              <motion.span
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+                className="inline-block w-[4px] h-[0.9em] bg-[#915eff] ml-1 rounded-sm"
+              />
+            </span>
           </motion.h1>
           <motion.p variants={textVariant(0.3)} className={cn(styles.heroSubText, "mt-2 text-white-100")}>
             {HERO_CONTENT}
