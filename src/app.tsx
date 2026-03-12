@@ -1,6 +1,7 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect, useCallback } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Navbar, SectionLoader } from "./components";
+import { LoadingScreen } from "./components/loading-screen";
 
 // Lazy loading components
 const Hero = lazy(() =>
@@ -39,13 +40,49 @@ const Footer = lazy(() => import("./components/footer"));
 
 // App
 const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+
+  // Called when the 3D model finishes loading
+  const handleModelLoaded = useCallback(() => {
+    // Quickly fill progress to 100% then dismiss
+    setProgress(100);
+    setTimeout(() => setIsLoading(false), 600);
+  }, []);
+
+  // Simulate progress while loading
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        // Slowly creep up to 90%, then wait for actual model load
+        if (prev >= 90) return prev;
+        const increment = Math.random() * 8 + 2;
+        return Math.min(prev + increment, 90);
+      });
+    }, 300);
+
+    // Safety timeout: dismiss after 8 seconds even if model hasn't loaded
+    const timeout = setTimeout(() => {
+      setProgress(100);
+      setTimeout(() => setIsLoading(false), 600);
+    }, 8000);
+
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
+  }, [isLoading]);
+
   return (
     <BrowserRouter>
+      <LoadingScreen isLoading={isLoading} progress={progress} />
       <div className="relative z-0 bg-primary">
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
           <Navbar />
           <Suspense fallback={<SectionLoader />}>
-            <Hero />
+            <Hero onModelLoaded={handleModelLoaded} />
           </Suspense>
         </div>
         <Suspense fallback={<SectionLoader />}>
@@ -66,3 +103,4 @@ const App = () => {
 };
 
 export default App;
+

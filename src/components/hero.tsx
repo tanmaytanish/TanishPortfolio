@@ -6,8 +6,12 @@ import { cn } from "../utils/lib";
 import { HERO_CONTENT } from "../constants";
 import { fadeIn, staggerContainer, textVariant } from "../utils/motion";
 
+type HeroProps = {
+  onModelLoaded?: () => void;
+};
+
 // Hero
-export const Hero = () => {
+export const Hero = ({ onModelLoaded }: HeroProps) => {
   return (
     <motion.section
       variants={staggerContainer()}
@@ -46,7 +50,7 @@ export const Hero = () => {
         variants={fadeIn("left", "tween", 0.5, 1)}
         className="w-full lg:w-1/2 h-[50vh] lg:h-full relative"
       >
-        <ComputersCanvas />
+        <ComputersCanvas onModelLoaded={onModelLoaded} />
       </motion.div>
 
       {/* Scroll to about section */}
