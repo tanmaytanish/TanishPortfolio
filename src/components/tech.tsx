@@ -1,6 +1,8 @@
-import { BallCanvas } from "./canvas";
+import { lazy, Suspense } from "react";
 import { TECHNOLOGIES } from "../constants";
 import { SectionWrapper } from "../hoc";
+
+const BallCanvas = lazy(() => import("./canvas/ball"));
 
 // Technologies
 export const Tech = () => {
@@ -10,7 +12,9 @@ export const Tech = () => {
         {/* Iterate over each technology */}
         {TECHNOLOGIES.map((technology) => (
           <div className="w-28 h-28" key={technology.name}>
-            <BallCanvas icon={technology.icon} />
+            <Suspense fallback={<div className="w-full h-full rounded-full bg-tertiary animate-pulse" />}>
+              <BallCanvas icon={technology.icon} />
+            </Suspense>
           </div>
         ))}
       </div>
