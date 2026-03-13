@@ -8,6 +8,9 @@ import { LoadingScreen } from "./components/loading-screen";
 const Hero = lazy(() =>
   import("./components/hero").then((module) => ({ default: module.Hero })),
 );
+const CursorCanvas = lazy(() =>
+  import("./components/canvas/cursor")
+);
 const About = lazy(() =>
   import("./components/about").then((module) => ({ default: module.About })),
 );
@@ -89,6 +92,9 @@ const App = () => {
     >
       <BrowserRouter>
         <LoadingScreen isLoading={isLoading} progress={progress} />
+        <Suspense fallback={null}>
+          <CursorCanvas />
+        </Suspense>
         <div className="relative z-0 bg-primary">
           <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
             <Navbar />
