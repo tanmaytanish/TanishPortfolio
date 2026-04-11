@@ -25,16 +25,14 @@ const ServiceCard = ({ index, title, icon }: ServiceCardProps) => {
     >
       <motion.div
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
-        className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card transition-all duration-300 hover:scale-[1.05]"
+        className="w-full rounded-[20px] shadow-card transition-all duration-300 hover:scale-[1.05]"
       >
-        <div className="bg-tertiary/40 backdrop-blur-md rounded-[20px] py-8 px-12 min-h-[280px] flex justify-evenly items-center flex-col border border-white/10">
-          <div className="w-20 h-20 rounded-full flex items-center justify-center bg-white/5 border border-white/10 shadow-inner">
-            <img src={icon} alt={title} className="w-12 h-12 object-contain" />
-          </div>
-          <h3 className="text-white text-[20px] font-bold text-center mt-4">
+        <div className="bg-[#1a1a2e] rounded-[20px] py-10 px-12 min-h-[280px] flex justify-center items-center flex-col border border-[#2a2a4a]">
+          <img src={icon} alt={title} className="w-16 h-16 object-contain mb-6" />
+          <h3 className="text-white text-[20px] font-bold text-center">
             {title}
           </h3>
-          <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mt-4" />
+          <div className="w-10 h-[3px] bg-[#4a90d9] rounded-full mt-5" />
         </div>
       </motion.div>
     </Tilt>
